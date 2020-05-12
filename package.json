@@ -1,0 +1,16 @@
+{
+    "name": "sage",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./dist/sage.js",
+    "scripts": {
+        "build:js": "rollup --config",
+        "watch:js": "rollup --config --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "rollup": "^2.3.2"
+    }
+}
