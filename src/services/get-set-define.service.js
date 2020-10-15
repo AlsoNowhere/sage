@@ -1,5 +1,5 @@
 
-export const get = (scope,property,action) => {
+export const get = (scope, property, action) => {
     if (!(scope instanceof Object)) {
         throw new Error("Thyme, get, scope -- You must pass an Object as the scope");
     }
@@ -10,12 +10,12 @@ export const get = (scope,property,action) => {
         throw new Error("Thyme, get, action -- You must pass a function as the action");
     }
 
-    Object.defineProperty(scope,property,{
+    Object.defineProperty(scope, property, {
         get: action
     });
 }
 
-export const set = (scope,property,action) => {
+export const set = (scope, property, action) => {
     if (!(scope instanceof Object)) {
         throw new Error("Thyme, set, scope -- You must pass an Object as the scope");
     }
@@ -26,12 +26,12 @@ export const set = (scope,property,action) => {
         throw new Error("Thyme, set, action -- You must pass a function as the action");
     }
 
-    Object.defineProperty(scope,property,{
+    Object.defineProperty(scope, property, {
         set: action
     });
 }
 
-export const define = (scope,property,getAction,setAction) => {
+export const define = (scope, property, getAction, setAction, objectDefinitions = {}) => {
     if (!(scope instanceof Object)) {
         throw new Error("Thyme, define, scope -- You must pass an Object as the scope");
     }
@@ -45,8 +45,9 @@ export const define = (scope,property,getAction,setAction) => {
         throw new Error("Thyme, define, setAction -- You must pass a function as the setAction");
     }
 
-    Object.defineProperty(scope,property,{
+    Object.defineProperty(scope, property, {
         get: getAction,
-        set: setAction
+        set: setAction,
+        ...objectDefinitions
     });
 }
