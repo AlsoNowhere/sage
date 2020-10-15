@@ -1,42 +1,42 @@
 
-var baseForEach = function(initialIncrement, howToEndWhile, increment){
-    return function(array, callback){
-        var i = initialIncrement(array),
-            result,
-            newArray = [];
-        while (howToEndWhile(i,array)) {
+const baseForEach = (initialIncrement, howToEndWhile, increment) => {
+    return (array, callback) => {
+
+        let i = initialIncrement(array),
+            result;
+
+        const newArray = [];
+
+        while (howToEndWhile(i, array)) {
+
             result = callback(array[i], i);
+
             if (result === false) {
                 break;
             }
+
             if (typeof result === "number") {
                 i += result;
             }
             else {
                 newArray.push(result);
             }
+
             i += increment;
         }
+
         return newArray;
     }
 }
 
-export var forEach = baseForEach(
-    function(){
-        return 0;
-    },
-    function(i, array){
-        return i < array.length;
-    },
+export const forEach = baseForEach(
+    () => 0,
+    (i, array) => i < array.length,
     1
 );
 
-export var reverseForEach = baseForEach(
-    function(array){
-        return array.length - 1;
-    },
-    function(i){
-        return i >= 0;
-    },
+export const reverseForEach = baseForEach(
+    array => array.length - 1,
+    i => i >= 0,
     -1
 );

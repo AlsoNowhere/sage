@@ -1,9 +1,19 @@
 
-export var logger = {
-    error: function(app,_module,property,message){
-        throw new Error(`${app} - ${_module} - ${property} -- ${message}`);
+export const logger = {
+    error: (
+        app,
+        location,
+        property,
+        message
+    ) => {
+        throw new Error(`${app} - ${location} - ${property} -- ${message}`);
     },
-    warn: function(app,_module,property,message) {
-        console.warn(`${app} - ${_module} - ${property} -- ${message}`);
+    warn: (
+        app,
+        location,
+        property,
+        message
+    ) => {
+        console.warn(`${app} - ${location} - ${property} -- ${message}`);
     }
 }
