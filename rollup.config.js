@@ -1,11 +1,13 @@
+import resolve from "@rollup/plugin-node-resolve";
 
 export default {
-    input: "./src/main.js",
-    output: {
-        file: "./dist/sage.js",
-        format: "esm"
-    },
-    watch: {
-        exclude: "node_modules/**"
-    }
-}
+  input: "./src/index.js",
+  output: {
+    file: "./dist/index.js",
+    format: "esm",
+  },
+  plugins: [resolve()],
+  watch: {
+    exclude: "node_modules/**",
+  },
+};
