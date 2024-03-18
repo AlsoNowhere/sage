@@ -10,7 +10,8 @@ export const path = {
       .split("/")
       .filter((x) => x !== "");
   },
-  set(url) {
+
+  set(url: Array<string>) {
     window.location.hash = url.join("/");
   },
 };

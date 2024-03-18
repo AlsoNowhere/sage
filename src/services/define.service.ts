@@ -1,9 +1,20 @@
-const defaultProperties = {
+type TProperties = {
+  writable?: boolean;
+  configurable?: boolean;
+  enumerable?: boolean;
+};
+
+const defaultProperties: TProperties = {
   configurable: true,
   enumerable: true,
 };
 
-export const get = (obj, property, action, propertes = {}) => {
+export const get = (
+  obj: Object,
+  property: string,
+  action: () => any,
+  propertes: TProperties = {}
+) => {
   Object.defineProperty(obj, property, {
     get: action,
     ...defaultProperties,
@@ -11,7 +22,12 @@ export const get = (obj, property, action, propertes = {}) => {
   });
 };
 
-export const set = (obj, property, action, propertes = {}) => {
+export const set = (
+  obj: Object,
+  property: string,
+  action: (value: any) => any,
+  propertes: TProperties = {}
+) => {
   Object.defineProperty(obj, property, {
     set: (value) => action(value),
     ...defaultProperties,
@@ -20,12 +36,12 @@ export const set = (obj, property, action, propertes = {}) => {
 };
 
 export const define = (
-  obj,
-  property,
-  getAction,
-  setAction,
-  initialVlue,
-  propertes = {}
+  obj: Object,
+  property: string,
+  getAction: (value: any) => any,
+  setAction: (value: any) => any,
+  initialVlue: any,
+  propertes: TProperties = {}
 ) => {
   let _value = initialVlue;
   Object.defineProperty(obj, property, {
