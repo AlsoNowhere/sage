@@ -1,3 +1,7 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
 const defaultProperties = {
     configurable: true,
     enumerable: true,
@@ -202,4 +206,12 @@ const styles = (obj) => {
         .join("; ");
 };
 
-export { define, get, getDate, path, set, setAttributes, styles, toast, wait };
+exports.define = define;
+exports.get = get;
+exports.getDate = getDate;
+exports.path = path;
+exports.set = set;
+exports.setAttributes = setAttributes;
+exports.styles = styles;
+exports.toast = toast;
+exports.wait = wait;
