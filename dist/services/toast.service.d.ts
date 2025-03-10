@@ -7,5 +7,5 @@ interface IToastOptions {
     classes?: Array<string>;
     buttonClasses?: Array<string>;
 }
-export declare const toast: (message: string, theme?: TThemes | IToastOptions) => Promise<void>;
+export declare const toast: (message: string, theme?: TThemes | IToastOptions, alternateElementTarget?: HTMLElement) => Promise<void>;
 export {};

@@ -43,7 +43,17 @@ class Toaster {
     this.target.append(this.toastContainer);
   }
 
-  toast = async (message: string, options: TThemes | IToastOptions) => {
+  toast = async (
+    message: string,
+    options: TThemes | IToastOptions,
+    alternateElementTarget?: HTMLElement
+  ) => {
+    const _previousTarget = this.target;
+
+    if (alternateElementTarget !== undefined) {
+      this.target = alternateElementTarget;
+    }
+
     const theme =
       typeof options === "string" ? options : options?.theme ?? "blueberry";
 
@@ -53,6 +63,8 @@ class Toaster {
     if (this.toasts.length === 0) {
       this.mountToastContainer();
     }
+
+    this.target = _previousTarget;
 
     const toast: IToast = { element: document.createElement("div") };
     toast.element.classList.add("toast", `toast__${theme}`, ...(classes || []));
@@ -127,7 +139,9 @@ class Toaster {
 }
 
 const toaster = new Toaster(document.body);
+
 export const toast = (
   message: string,
-  theme: TThemes | IToastOptions = "blueberry"
-) => toaster.toast(message, theme);
+  theme: TThemes | IToastOptions = "blueberry",
+  alternateElementTarget?: HTMLElement
+) => toaster.toast(message, theme, alternateElementTarget);
